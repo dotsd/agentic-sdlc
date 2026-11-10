@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "project": "{{PROJECT_NAME}}",
+  "mode": "{{MODE}}",
+  "updated_at": "{{DATE}}T00:00:00Z",
+  "tasks": [
+    {
+      "id": "T-001",
+      "phase": 1,
+      "title": "Finalize docs/sdlc/CONSTITUTION.md stack, lint, and test commands",
+      "parallel": false,
+      "depends_on": [],
+      "spec_refs": ["CONSTITUTION"],
+      "files": ["docs/sdlc/CONSTITUTION.md"],
+      "verify_cmd": "asdlc validate",
+      "status": "pending"
+    },
+    {
+      "id": "T-002",
+      "phase": 1,
+      "title": "Author specifications and architecture contracts in docs/sdlc/",
+      "parallel": false,
+      "depends_on": ["T-001"],
+      "spec_refs": ["SPEC", "PLAN", "AGENT_SPEC"],
+      "files": ["docs/sdlc/"],
+      "verify_cmd": "asdlc validate",
+      "status": "pending"
+    },
+    {
+      "id": "T-003",
+      "phase": 1,
+      "title": "Run fresh-context spec-critic and security-redteam review gate",
+      "parallel": false,
+      "depends_on": ["T-002"],
+      "spec_refs": ["CONSTITUTION"],
+      "files": ["docs/sdlc/"],
+      "verify_cmd": "asdlc status",
+      "status": "pending"
+    }
+  ]
+}

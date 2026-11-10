@@ -1,0 +1,63 @@
+[project]
+name = "agentic-sdlc"
+version = "0.1.0"
+description = "Unified Spec-Driven Development (SDD) and Agent-Driven Development (ADD) framework — LLM-agnostic, cloud-agnostic, and compatible with any coding agent."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "soumya d." }]
+keywords = [
+    "spec-driven-development",
+    "agent-driven-development",
+    "agentic-sdlc",
+    "ai-agents",
+    "llm",
+    "mcp",
+    "claude-code",
+    "cursor",
+    "copilot",
+    "gemini",
+    "openai",
+    "kimi",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/dotsd/agentic-sdlc"
+Repository = "https://github.com/dotsd/agentic-sdlc"
+Issues = "https://github.com/dotsd/agentic-sdlc/issues"
+
+[project.scripts]
+asdlc = "agentic_sdlc.cli:main"
+agentic-sdlc = "agentic_sdlc.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/agentic_sdlc"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"skills" = "agentic_sdlc/_bundle/skills"
+"agents" = "agentic_sdlc/_bundle/agents"
+"templates" = "agentic_sdlc/_bundle/templates"
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = ["-v", "--tb=short"]
